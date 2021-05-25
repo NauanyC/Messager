@@ -28,9 +28,16 @@ export const Navbar = styled.div`
 `;
 
 export const LeftSideMenu = styled.ul`
-
   width: 90px;
-
+  padding-top: 30px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   border 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+  li {
+    margin: 2px;
+  }
 `;

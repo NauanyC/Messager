@@ -2,6 +2,12 @@ import React from "react";
 
 import { HiUserCircle } from "react-icons/hi";
 import { GiStoneBlock } from "react-icons/gi";
+import {
+  AiOutlineBlock,
+  AiOutlineUser,
+  AiOutlineWallet,
+  AiOutlinePlus,
+} from "react-icons/ai";
 
 import { Container, Content, LeftSideMenu, Navbar } from "./styles";
 
@@ -30,10 +36,18 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
       </Navbar>
       <Content>
         <LeftSideMenu>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
+          <li>
+            <AiOutlineBlock size={40} />
+          </li>
+          <li>
+            <AiOutlineUser size={40} />
+          </li>
+          <li>
+            <AiOutlineWallet size={40} />
+          </li>
+          <li>
+            <AiOutlinePlus size={40} />
+          </li>
         </LeftSideMenu>
         {children}
       </Content>

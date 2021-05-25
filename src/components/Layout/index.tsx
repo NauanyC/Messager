@@ -3,7 +3,7 @@ import React from "react";
 import { HiUserCircle } from "react-icons/hi";
 import { GiStoneBlock } from "react-icons/gi";
 
-import { Container, LeftSideMenu, Navbar } from "./styles";
+import { Container, Content, LeftSideMenu, Navbar } from "./styles";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -28,8 +28,15 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
           </p>
         </div>
       </Navbar>
-      <LeftSideMenu> I am a left side menu! </LeftSideMenu>
-      {children}
+      <Content>
+        <LeftSideMenu>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </LeftSideMenu>
+        {children}
+      </Content>
     </Container>
   );
 };

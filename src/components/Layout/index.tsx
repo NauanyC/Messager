@@ -1,7 +1,6 @@
 import React from "react";
 
-import Navbar from "./Navbar";
-import LeftSideMenu from "./LeftSideMenu";
+import { Container, LeftSideMenu, Navbar } from "./styles";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,11 +8,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
   return (
-    <div className="Layout">
-      <Navbar />
-      <LeftSideMenu />
+    <Container>
+      <Navbar> Hey I am a navbar</Navbar>
+      <LeftSideMenu> I am a left side menu! </LeftSideMenu>
       {children}
-    </div>
+    </Container>
   );
 };
 

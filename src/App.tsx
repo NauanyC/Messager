@@ -5,7 +5,7 @@ import GlobalStyles from "./styles/global";
 import Home from "./pages/Home";
 
 // layout
-import Layout from "./components/Layouts";
+import Layout from "./components/Layout";
 
 const App: React.FC = () => {
   return (

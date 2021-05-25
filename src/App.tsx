@@ -1,11 +1,19 @@
 import * as React from "react";
 import GlobalStyles from "./styles/global";
 
+// pages
+import Home from "./pages/Home";
+
+// layout
+import Layout from "./components/Layouts";
+
 const App: React.FC = () => {
   return (
     <div className="App">
       <GlobalStyles />
-      <h1>Hey! Talk to me... :(</h1>
+      <Layout>
+        <Home />
+      </Layout>
     </div>
   );
 };

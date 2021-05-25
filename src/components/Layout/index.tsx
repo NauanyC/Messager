@@ -30,7 +30,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
             <span>
               <HiUserCircle size={24} />
             </span>
-            Username
+            Nauany
           </p>
         </div>
       </Navbar>

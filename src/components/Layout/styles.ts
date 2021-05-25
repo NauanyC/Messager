@@ -40,4 +40,10 @@ export const LeftSideMenu = styled.ul`
   li {
     margin: 2px;
   }
+
+  @media(max-width: 480px) {
+    display: none;
+  }
+
+
 `;

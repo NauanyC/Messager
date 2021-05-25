@@ -1,19 +1,19 @@
-Arguments: 
+Arguments:
   C:\Program Files\nodejs\node.exe C:\Users\Nauany\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
 
-PATH: 
+PATH:
   C:\Users\Nauany\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Nauany\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs;C:\Program Files\OpenJDK\openjdk-8u292-b10\bin;C:\Users\Nauany\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Java\jdk-16.0.1\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\Nauany\AppData\Local\jdk-11.0.2\bin;C:\Users\Nauany\AppData\Local\Microsoft\WindowsApps;C:\Users\Nauany\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Nauany\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
-Yarn version: 
+Yarn version:
   1.22.10
 
-Node version: 
+Node version:
   16.2.0
 
-Platform: 
+Platform:
   win32 x64
 
-Trace: 
+Trace:
   Error: canceled
       at Interface.<anonymous> (C:\Users\Nauany\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:136216:13)
       at Interface.emit (node:events:365:28)
@@ -26,11 +26,11 @@ Trace:
       at ReadStream.emit (node:events:365:28)
       at addChunk (node:internal/streams/readable:314:12)
 
-npm manifest: 
+npm manifest:
   No manifest
 
-yarn manifest: 
+yarn manifest:
   No manifest
 
-Lockfile: 
+Lockfile:
   No lockfile

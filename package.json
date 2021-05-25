@@ -1,0 +1,8 @@
+{
+  "name": "messager-frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/NauanyC/Messager",
+  "author": "Nauany <nauanycc@outlook.com.br>",
+  "license": "MIT"
+}

@@ -57,7 +57,7 @@ export const createMessage =
     }
   };
 
-export const updateTutorial =
+export const updateMessage =
   (id: string, data: NewMessageData) => async (dispatch: Dispatch) => {
     try {
       const res = await MessagesService.update(id, data);
@@ -78,17 +78,16 @@ export const updateTutorial =
     }
   };
 
-export const deleteTutorial = (id: string) => async (dispatch: Dispatch) => {
+export const deleteMessage = (id: string) => async (dispatch: Dispatch) => {
   try {
     const res = await MessagesService.remove(id);
 
-    console.log("res");
-    console.log(res);
-
-    dispatch({
-      type: DELETE_MESSAGE,
-      payload: { id },
-    });
+    if (res.data) {
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: { id },
+      });
+    }
   } catch (err) {
     console.log("err");
     console.log(err);

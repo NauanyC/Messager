@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {
   CREATE_MESSAGE,
   LOADING_MESSAGES,
@@ -57,7 +58,10 @@ function messagesReducer(messages = initialState, action: any): any {
       });
 
     case DELETE_MESSAGE:
-      return messages.messages.filter(({ id }) => id !== payload.id);
+      return {
+        ...messages,
+        messages: messages.messages.filter(({ id }) => id !== payload.id),
+      };
 
     default:
       return messages;

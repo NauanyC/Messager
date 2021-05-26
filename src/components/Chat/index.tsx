@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { HiUserCircle } from "react-icons/hi";
-import { IoIosSettings, IoIosArrowDown } from "react-icons/io";
+import { IoIosSettings } from "react-icons/io";
 import Loader from "react-loader-spinner";
+
+import Message from "./Message";
 
 import {
   CentralizedContainer,
@@ -88,21 +90,11 @@ const Chat: React.FC = () => {
           <Messages>
             {messages &&
               messages.map((message) => (
-                <li
-                  className={
-                    message.name !== username
-                      ? "message-from-other-users"
-                      : "message-from-own-user"
-                  }
+                <Message
                   key={message.id}
-                >
-                  <strong>{message.name}</strong>: {message.text}
-                  {message.name === username && (
-                    <span>
-                      <IoIosArrowDown size={18} />
-                    </span>
-                  )}
-                </li>
+                  message={message}
+                  username={username}
+                />
               ))}
           </Messages>
           <input type="text" placeholder="Type your message..." />

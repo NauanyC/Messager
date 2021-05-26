@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { shade } from "polished";
 
 export const CentralizedContainer = styled.div`
   display: flex;
@@ -87,45 +86,6 @@ export const Messages = styled.ul`
 
   display: flex;
   flex-direction: column;
-
-  li {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 10px;
-    display: inline-block;
-    width: fit-content;
-    max-width: 50%;
-    word-break: break-all;
-    background: var(--main-blue);
-  }
-
-  .message-from-other-users {
-    margin-left: auto;
-    background: var(--pure-white);
-  }
-
-  svg {
-    vertical-align: bottom;
-    margin: 0 3px 0 16px;
-    display: none;
-  }
-
-  li.message-from-own-user:hover {
-    svg {
-      display: inline-block;
-    }
-  }
-
-  li.message-from-other-users:hover {
-    background: ${shade(0.2, "#fcfcff")};
-  }
-
-  @media (max-width: 650px) {
-    li {
-      max-width: 95%;
-    }
-  }
 `;
 
 export const Error = styled.h3`

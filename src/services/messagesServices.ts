@@ -13,7 +13,7 @@ const update = (id: string, data: NewMessageData): Promise<Message> => {
   return api.put(`/comment/${id}`, data);
 };
 
-const remove = (id: string): Promise<boolean> => {
+const remove = (id: string): Promise<any> => {
   return api.delete(`/comment/${id}`);
 };
 

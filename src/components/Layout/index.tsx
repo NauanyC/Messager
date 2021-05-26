@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { HiUserCircle } from "react-icons/hi";
 import { GiStoneBlock } from "react-icons/gi";
@@ -10,12 +11,21 @@ import {
 } from "react-icons/ai";
 
 import { Container, Content, LeftSideMenu, Navbar } from "./styles";
+import { RootState } from "../../redux/store";
+import { fetchMessages } from "../../redux/actions/messagesActions";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+  const dispatch = useDispatch();
+  const { messages } = useSelector((state: RootState) => state);
+
+  useEffect(() => {
+    dispatch(fetchMessages());
+  }, [dispatch]);
+
   return (
     <Container>
       <Navbar>
@@ -30,7 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
             <span>
               <HiUserCircle size={24} />
             </span>
-            Nauany
+            {messages.username}
           </p>
         </div>
       </Navbar>

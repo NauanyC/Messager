@@ -100,3 +100,7 @@ export const Messages = styled.ul`
     }
   }
 `;
+
+export const Error = styled.div`
+  color: red;
+`;

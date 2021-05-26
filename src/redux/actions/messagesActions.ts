@@ -6,6 +6,7 @@ import {
   UPDATE_MESSAGE,
   DELETE_MESSAGE,
   FETCH_MESSAGES_SUCCESS,
+  FETCH_MESSAGES_ERROR,
 } from "../types";
 
 import MessagesService from "../../services/messagesServices";
@@ -23,16 +24,15 @@ export const fetchMessages = () => async (dispatch: Dispatch) => {
 
     const res = await MessagesService.getAll();
 
-    console.log("res");
-    console.log(res);
-
     dispatch({
       type: FETCH_MESSAGES_SUCCESS,
       payload: res,
     });
   } catch (err) {
-    console.log("err");
-    console.log(err);
+    dispatch({
+      type: FETCH_MESSAGES_ERROR,
+      payload: err,
+    });
   }
 };
 

@@ -22,9 +22,6 @@ const Chat: React.FC = () => {
 
   const [chatMembers, setChatMembers] = useState<string[]>([]);
 
-  console.log("chatMembers");
-  console.log(chatMembers);
-
   useEffect(() => {
     const currentlyTalkingWith = messages
       .filter((message) => message.name !== username)

@@ -2,6 +2,7 @@ import {
   CREATE_MESSAGE,
   LOADING_MESSAGES,
   FETCH_MESSAGES_SUCCESS,
+  FETCH_MESSAGES_ERROR,
   UPDATE_MESSAGE,
   DELETE_MESSAGE,
 } from "../types";
@@ -35,6 +36,13 @@ function messagesReducer(messages = initialState, action: any): any {
         messages: payload.data,
         loading: false,
         error: "",
+      };
+
+    case FETCH_MESSAGES_ERROR:
+      return {
+        ...messages,
+        loading: false,
+        error: payload,
       };
 
     case UPDATE_MESSAGE:

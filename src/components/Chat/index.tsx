@@ -1,10 +1,11 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { HiUserCircle } from "react-icons/hi";
-import { IoIosSettings } from "react-icons/io";
+import { IoIosSettings, IoIosArrowDown } from "react-icons/io";
 import Loader from "react-loader-spinner";
 
 import {
+  CentralizedContainer,
   Container,
   CurrentChat,
   Error,
@@ -13,11 +14,8 @@ import {
   OpenChats,
 } from "./styles";
 import { RootState } from "../../redux/store";
-import { Message } from "../../interfaces/Message";
-/*
-export interface ChatProps {} */
 
-const Chat: React.FC /* <ChatProps> */ = () => {
+const Chat: React.FC = () => {
   const { username, messages, error, loading } = useSelector(
     (state: RootState) => state.messages,
   );
@@ -40,18 +38,27 @@ const Chat: React.FC /* <ChatProps> */ = () => {
   const renderChat = (): JSX.Element => {
     if (loading) {
       return (
-        <Loader
-          type="TailSpin"
-          color="#000"
-          height={100}
-          width={100}
-          timeout={3000}
-        />
+        <CentralizedContainer>
+          <Loader
+            type="TailSpin"
+            color="#000"
+            height={100}
+            width={100}
+            timeout={3000}
+          />
+        </CentralizedContainer>
       );
     }
 
     if (error) {
-      return <Error />;
+      return (
+        <CentralizedContainer>
+          <Error>
+            Sorry, we had an error fetching your messages. Please, try again
+            later!
+          </Error>
+        </CentralizedContainer>
+      );
     }
 
     return (
@@ -82,18 +89,22 @@ const Chat: React.FC /* <ChatProps> */ = () => {
             </span>
           </Header>
           <Messages>
-            {/*
-      <li> Hey!</li> */}
-
             {messages &&
               messages.map((message) => (
                 <li
                   className={
-                    message.name !== username ? "message-from-own-user" : ""
+                    message.name !== username
+                      ? "message-from-other-users"
+                      : "message-from-own-user"
                   }
                   key={message.id}
                 >
                   <strong>{message.name}</strong>: {message.text}
+                  {message.name === username && (
+                    <span>
+                      <IoIosArrowDown size={18} />
+                    </span>
+                  )}
                 </li>
               ))}
           </Messages>

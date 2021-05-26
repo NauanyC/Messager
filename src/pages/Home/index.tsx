@@ -1,5 +1,5 @@
 import React from "react";
-import Chat from "../../components/Form";
+import Chat from "../../components/Chat";
 import { Container } from "./styles";
 
 const Home: React.FC = () => {

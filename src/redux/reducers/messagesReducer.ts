@@ -21,7 +21,10 @@ function messagesReducer(messages = initialState, action: any): any {
 
   switch (type) {
     case CREATE_MESSAGE:
-      return [...messages.messages, payload.data];
+      return {
+        ...messages,
+        messages: [...messages.messages, payload.data],
+      };
 
     case LOADING_MESSAGES:
       return {

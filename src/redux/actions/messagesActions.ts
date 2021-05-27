@@ -47,8 +47,6 @@ export const createMessage =
         payload: res,
       });
 
-      console.log("res");
-      console.log(res);
       return Promise.resolve(res);
     } catch (err) {
       console.log("err");

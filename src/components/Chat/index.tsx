@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { HiUserCircle } from "react-icons/hi";
 import { IoIosSettings } from "react-icons/io";
@@ -15,14 +15,17 @@ import {
   Messages,
   OpenChats,
 } from "./styles";
-import { RootState } from "../../redux/store";
+import { RootState, useAppDispatch } from "../../redux/store";
+import { createMessage } from "../../redux/actions/messagesActions";
 
 const Chat: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { username, messages, error, loading } = useSelector(
     (state: RootState) => state.messages,
   );
 
   const [chatMembers, setChatMembers] = useState<string[]>([]);
+  const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
     const currentlyTalkingWith = messages
@@ -33,6 +36,22 @@ const Chat: React.FC = () => {
 
     setChatMembers(currentlyTalkingWith);
   }, [messages, username]);
+
+  const handleInputTyping = useCallback(
+    (event) => {
+      if (event.keyCode === 13) {
+        dispatch(createMessage({ name: username, text: newMessage }))
+          .then(() => {
+            setNewMessage("");
+          })
+          .catch((e: any) => {
+            console.log(e);
+            //should display error toast
+          });
+      }
+    },
+    [dispatch, username, newMessage],
+  );
 
   const renderChat = (): JSX.Element => {
     if (loading) {
@@ -101,6 +120,9 @@ const Chat: React.FC = () => {
             type="text"
             placeholder="Type your message..."
             className="new-message-box"
+            onKeyDown={(e) => handleInputTyping(e)}
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
           />
         </CurrentChat>
       </>

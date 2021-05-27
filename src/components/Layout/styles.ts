@@ -41,7 +41,7 @@ export const LeftSideMenu = styled.ul`
     margin: 2px;
   }
 
-  @media(max-width: 480px) {
+  @media(max-width: 650px) {
     display: none;
   }
 

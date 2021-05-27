@@ -22,6 +22,10 @@ export const Container = styled.div`
   ul {
     list-style-type: none;
   }
+
+  @media (max-width: 650px) {
+    min-width: 75%;
+  }
 `;
 
 export const OpenChats = styled.div`
@@ -68,7 +72,7 @@ export const CurrentChat = styled.div`
   flex: 1;
   position: relative;
 
-  input {
+  input.new-message-box {
     position: absolute;
     bottom: 0;
     width: 100%;

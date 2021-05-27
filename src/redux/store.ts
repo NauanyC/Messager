@@ -1,7 +1,9 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import { useDispatch } from "react-redux";
 import { Message } from "../interfaces/Message";
+
 import rootReducer from "./reducers";
 
 const initialState = {};
@@ -24,3 +26,6 @@ export type RootState = {
     loading: boolean;
   };
 };
+
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = (): any => useDispatch<AppDispatch>(); // Export a hook that can be reused to resolve types

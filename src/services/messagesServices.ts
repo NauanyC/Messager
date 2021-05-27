@@ -9,8 +9,8 @@ const create = (data: NewMessageData): Promise<Message> => {
   return api.post("/comments", data);
 };
 
-const update = (id: string, data: NewMessageData): Promise<Message> => {
-  return api.put(`/comment/${id}`, data);
+const update = ({ id, body }: any): Promise<any> => {
+  return api.put(`comment/${id}`, body);
 };
 
 const remove = (id: string): Promise<any> => {

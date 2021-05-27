@@ -8,8 +8,17 @@ export const Container = styled.li`
   padding: 10px;
   display: inline-block;
   width: fit-content;
-  max-width: 50%;
+  max-width: 60%;
   background: var(--main-blue);
+
+  div {
+    display: flex;
+
+    span.edit-icons {
+      display: flex;
+      float: right;
+    }
+  }
 
   &.message-from-other-users {
     margin-left: auto;
@@ -19,7 +28,6 @@ export const Container = styled.li`
   svg {
     vertical-align: bottom;
     margin: 0 3px 0 16px;
-    display: none;
   }
 
   ul {
@@ -34,7 +42,7 @@ export const Container = styled.li`
     ul {
       display: flex;
       float: right;
-      margin: 2px 10px;
+      margin: 4px 10px;
     }
   }
 
@@ -42,9 +50,26 @@ export const Container = styled.li`
     background: ${shade(0.2, "#fcfcff")};
   }
 
-  @media (max-width: 650px) {
-     {
-      max-width: 95%;
-    }
+  input {
+    border: 0;
+    border-bottom: 1px solid grey;
+    background: transparent;
+    width: 80%;
+  }
+
+  @media (max-width: 1260px) {
+    max-width: 95%;
+  }
+`;
+
+export const Title = styled.div`
+  strong:nth-child(1) {
+    margin-right: 20px;
+  }
+
+  span strong {
+    display: inline-block;
+    color: ${shade(0.2, "#000")};
+    font-size: 13px;
   }
 `;

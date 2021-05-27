@@ -7,6 +7,6 @@ export interface Message {
   id: string;
   name: string;
   text: string;
-  dataAdded: number;
-  dataEdited: number;
+  dateAdded: number;
+  dateEdited: number;
 }

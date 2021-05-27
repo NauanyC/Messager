@@ -1,4 +1,3 @@
-/* eslint-disable no-case-declarations */
 import {
   CREATE_MESSAGE,
   LOADING_MESSAGES,
@@ -47,15 +46,17 @@ function messagesReducer(messages = initialState, action: any): any {
       };
 
     case UPDATE_MESSAGE:
-      return messages.messages.map((message) => {
-        if (message.id === payload.id) {
-          return {
-            ...message,
-            messages: payload.data,
-          };
-        }
-        return message;
-      });
+      const { id, text } = action.payload;
+      const messageToUpdate = messages.messages.find(
+        (message) => message.id === id,
+      );
+      if (messageToUpdate) {
+        messageToUpdate.text = text;
+      }
+
+      return {
+        ...messages,
+      };
 
     case DELETE_MESSAGE:
       return {

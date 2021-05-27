@@ -58,19 +58,19 @@ export const createMessage =
   };
 
 export const updateMessage =
-  (id: string, data: NewMessageData) => async (dispatch: Dispatch) => {
+  (id: string, user: string, newText: string) => async (dispatch: Dispatch) => {
     try {
-      const res = await MessagesService.update(id, data);
+      const body = { name: user, text: newText };
+      const res = await MessagesService.update({ id, body });
 
-      console.log("res");
-      console.log(res);
+      if (res.data) {
+        dispatch({
+          type: UPDATE_MESSAGE,
+          payload: res.data,
+        });
+      }
 
-      dispatch({
-        type: UPDATE_MESSAGE,
-        payload: data,
-      });
-
-      return Promise.resolve(res);
+      return Promise.resolve(res.data);
     } catch (err) {
       console.log("err");
       console.log(err);

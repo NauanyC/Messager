@@ -97,7 +97,11 @@ const Chat: React.FC = () => {
                 />
               ))}
           </Messages>
-          <input type="text" placeholder="Type your message..." />
+          <input
+            type="text"
+            placeholder="Type your message..."
+            className="new-message-box"
+          />
         </CurrentChat>
       </>
     );

@@ -1,15 +1,21 @@
-import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import React, { useCallback, useState } from "react";
 
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import {
+  AiFillDelete,
+  AiFillEdit,
+  AiOutlineClose,
+  AiOutlineCheck,
+} from "react-icons/ai";
 
-import { Container } from "./style";
+import { parseIntToDate } from "../../../utils/date";
+import { Container, Title } from "./style";
 
 import { Message as MessageInterface } from "../../../interfaces/Message";
 import {
   deleteMessage,
   updateMessage,
 } from "../../../redux/actions/messagesActions";
+import { useAppDispatch } from "../../../redux/store";
 
 interface MessageProps {
   message: MessageInterface;
@@ -20,7 +26,9 @@ const Message: React.FC<MessageProps> = ({
   message,
   username,
 }: MessageProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const [editMode, setEditMode] = useState(false);
+  const [editedText, setEditedText] = useState(message.text);
 
   const handleDeleteMessageClick = useCallback(
     (messageData) => {
@@ -29,10 +37,19 @@ const Message: React.FC<MessageProps> = ({
     [dispatch],
   );
 
-  const handleUpdateMessageClick = useCallback((messageData) => {
-    console.log("handleUpdateMessageClick");
-    /*  dispatch(updateMessage(messageData.id)); */
-  }, []);
+  const handleUpdateMessageClick = useCallback(
+    (messageData) => {
+      dispatch(updateMessage(messageData.id, messageData.name, editedText))
+        .then(() => {
+          setEditMode(false);
+        })
+        .catch((e: any) => {
+          console.log(e);
+          setEditMode(false);
+        });
+    },
+    [dispatch, editedText],
+  );
 
   return (
     <Container
@@ -43,24 +60,49 @@ const Message: React.FC<MessageProps> = ({
       }
       key={message.id}
     >
-      <p>
-        <strong>{message.name}</strong>: {message.text}
-      </p>
-      {message.name === username && (
-        <ul className="options-modal">
-          <li>
-            <AiFillDelete
-              size={20}
-              onClick={() => handleDeleteMessageClick(message)}
-            />
-          </li>
-          <li>
-            <AiFillEdit
+      {editMode ? (
+        <div>
+          <input
+            type="text"
+            value={editedText}
+            onChange={(e) => setEditedText(e.target.value)}
+          />
+          <span className="edit-icons">
+            <AiOutlineClose size={20} onClick={() => setEditMode(false)} />
+            <AiOutlineCheck
               size={20}
               onClick={() => handleUpdateMessageClick(message)}
             />
-          </li>
-        </ul>
+          </span>
+        </div>
+      ) : (
+        <>
+          <Title>
+            <strong>{message.name}</strong>
+            <span>
+              <strong>
+                {parseIntToDate(message.dateAdded)}
+                {message.dateAdded !== message.dateEdited ? " (edited)" : ""}
+              </strong>
+            </span>
+          </Title>
+          <br />
+          <p>{message.text}</p>
+
+          {message.name === username && (
+            <ul>
+              <li>
+                <AiFillDelete
+                  size={20}
+                  onClick={() => handleDeleteMessageClick(message)}
+                />
+              </li>
+              <li>
+                <AiFillEdit size={20} onClick={() => setEditMode(true)} />
+              </li>
+            </ul>
+          )}
+        </>
       )}
     </Container>
   );
